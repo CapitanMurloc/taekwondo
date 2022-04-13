@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  client:
+    image: jestrella/taekwondo-client:v0
+    container_name: taekwondo-client
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - ./client/src:/usr/share/nginx/html/
+    ports:
+      - "8051:80"
+  signaling:
+    image: jestrella/taekwondo-signaling:v0
+    container_name: taekwondo-signaling
+    build:
+      context: ./signaling
+      dockerfile: ./Dockerfile
+    restart: always
+    environment:
+      - PYTHONUNBUFFERED=1
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=iGkR5rXwvrdaKyy
+    volumes:
+      - ./signaling/src:/app/
+    ports:
+      - "8050:8050"
+    depends_on:
+      - redis
+  redis:
+    container_name: 'redis'
+    image: docker.io/bitnami/redis:6.2
+    environment:
+      - REDIS_PASSWORD=iGkR5rXwvrdaKyy
+    ports:
+      - "6379:6379"
+    volumes:
+      - ~/docker/redis_data:/bitnami
+  redis-commander:
+    container_name: 'redis-commander'
+    image: rediscommander/redis-commander
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=iGkR5rXwvrdaKyy
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis

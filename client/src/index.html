@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0, user-scalable=no">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .square-box {
+            width: 33%;
+            height: 0;
+            padding-top: 33%;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .landmark-grid-container {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #99999999;
+        }
+    </style>
+    <title>Taekwondo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.6.1629159505/control_utils.css"
+          integrity="sha256-FvceD/tO+rNuGNwxXiqVC2p+d63qeQHf0Td8qKkn0Go=" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d@0.3.1635987963/control_utils_3d.css"
+          integrity="sha256-nMk/3RCUheKORz0nyGVGDVcaq9dkt6QBXZ2uWU0EXUA=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.js"
+            integrity="sha256-7hTNJB9pNQSp6lX6Ly7Tsk2h98+ASSZxYGnQ0jJDTY4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.6.1629159505/control_utils.js"
+            integrity="sha256-sNvOjw7Akn6x43CJpAQml6eJFtbwa59WwH31CidgAAM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1620248257/drawing_utils.js"
+            integrity="sha256-L5Jry9TqC98ERwGM5UuSCGJ3EmVTRkVYFrDYuDSw8wU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils_3d@0.3.1635987963/control_utils_3d.js"
+            integrity="sha256-7xgVHcHtShLpKgtzi8ForjadLbhyr1k8hGMGilLIVP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1635988162/pose.js"
+            integrity="sha256-lVFZvkNpt6DsQ3ars357yCEkZ3kY5hw+O2NWKhAgsTU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<!--    <div class="canvas-container">-->
+        <video class="input_video"></video>
+        <canvas class="output_canvas" width="1280px" height="720px"></canvas>
+<!--    </div>-->
+    <div class="loading">
+        <div class="spinner"></div>
+        <div class="message">
+            Loading
+        </div>
+    </div>
+</div>
+<div class="control-panel"></div>
+<div class='square-box'>
+    <div class="landmark-grid-container">
+    </div>
+</div>
+<script type="module" src="script.js"></script>
+<script type="module" src="client.js"></script>
+</body>
+</html>
